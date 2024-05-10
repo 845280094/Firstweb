@@ -2,10 +2,10 @@ let myImage = document.querySelector("img");
 
 myImage.onclick = function () {
   let mySrc = myImage.getAttribute("src");
-  if (mySrc === "C:/Users/hcc/Desktop/FirstWeb/imgs/6d5806aba8a7f6b91bd2de139c19254c9cb950a6.jpg") {
-    myImage.setAttribute("src", "C:/Users/hcc/Desktop/FirstWeb/imgs/73634c71122ce47fa9d333ce87d7369785be060e.jpg");
+  if (mySrc === "FirstWeb/imgs/6d5806aba8a7f6b91bd2de139c19254c9cb950a6.jpg") {
+    myImage.setAttribute("src", "FirstWeb/imgs/73634c71122ce47fa9d333ce87d7369785be060e.jpg");
   } else {
-    myImage.setAttribute("src", "C:/Users/hcc/Desktop/FirstWeb/imgs/6d5806aba8a7f6b91bd2de139c19254c9cb950a6.jpg");
+    myImage.setAttribute("src", "FirstWeb/imgs/6d5806aba8a7f6b91bd2de139c19254c9cb950a6.jpg");
   }
 };
 
