@@ -1,0 +1,49 @@
+function speedsearch(e, t) {
+    parseajax.abort(), parseajax = $.getJSON(site_url + "ajax/speedsearch?num=" + e + "&&page=" + t + "&&callback=?", function (n) {
+        var r = n.shuju, i = n.jieguo;
+        $html = '<table  border="0" cellpadding="0" cellspacing="0" class="speed-table1"><tr class="speed-tr-h1">', $html += '<th width="51" align="center" style="padding-left: 20px">震级(M)</th><th width="126" align="center">发震时刻(UTC+8)</th><th width="60" align="center">纬度(°)</th>', $html += '<th width="60" align="center">经度(°)</th><th width="79" align="center">深度(千米)</th><th width="260" align="center">参考位置</th></tr>', r.length > 0 ? ($("#show").attr("rel", e), $("#save").attr("rel", e)) : ($("#show").attr("rel", ""), $("#save").attr("rel", "")), $j = 0;
+        for ($i = 0; $i < r.length; $i++)$j++, $j % 2 == 0 ? r[$i].M >= 6 ? $html += '<tr class="tr-red" style="background-color: #eeeeee;">' : r[$i].M >= 4 ? $html += '<tr style="background-color: #eeeeee;font-weight: bold;">' : $html += '<tr style="background-color: #eeeeee;">' : r[$i].M >= 6 ? $html += '<tr class="tr-red">' : r[$i].M >= 4 ? $html += '<tr style="font-weight: bold;">' : $html += "<tr>", $html += '<td align="center" style="padding-left: 20px">' + r[$i].M + '</td><td align="center">' + r[$i].O_TIME + '</td><td align="center">' + r[$i].EPI_LAT + '</td><td align="center">' + r[$i].EPI_LON + "</td>", $html += '<td align="center">' + r[$i].EPI_DEPTH + '</td><td align="left"><a href="' + static_url + r[$i].NEW_DID + '.html" cid="' + r[$i].CATA_ID + '" id="cid">' + r[$i].LOCATION_C + "</a></td></tr>";
+        $html += "</table>", $("#iteam-h1").html("查询结果：" + i), $("#speed-search").html($html), $("#paging").html(n.page), $("#paging").attr("value", e), $("#pagenum").html("当前页:" + t + "　总页数:" + n.num + "")
+    }, "jsonp")
+}
+var parseajax;
+window.ActiveXObject ? parseajax = new ActiveXObject("Microsoft.XMLHTTP") : window.XMLHttpRequest && (parseajax = new XMLHttpRequest), $(function () {
+    $(".daohang").live("click", function () {
+        $(this).parent("li").addClass("active"), $(this).parent("li").siblings("li").removeClass("active")
+    }), $("#search").live("click", function () {
+        var e = $("#start").val(), t = $("#end").val(), n = $("#jingdu1").val(), r = $("#jingdu2").val(), i = $("#weidu1").val(), s = $("#weidu2").val(), o = $("#height1").val(), u = $("#height2").val(), a = $("#zhenji1").val(), f = $("#zhenji2").val();
+        parseajax.abort(), parseajax = $.getJSON(site_url + "ajax/search?start=" + e + "&&end=" + t + "&&jingdu1=" + n + "&&jingdu2=" + r + "&&weidu1=" + i + "&&weidu2=" + s + "&&height1=" + o + "&&=height2:" + u + "&&zhenji1=" + a + "&&zhenji2=" + f + "&&callback=?", function (e) {
+            var t = e.shuju;
+            $html = '<table  border="0" cellpadding="0" cellspacing="0" class="speed-table1"><tr class="speed-tr-h1">', $html += '<th width="51" align="center" style="padding-left: 20px">震级(M)</th><th width="126" align="center">发震时刻(UTC+8)</th><th width="60" align="center">纬度(°)</th>', $j = 0, $html += '<th width="60" align="center">经度(°)</th><th width="79" align="center">深度(千米)</th><th width="260" align="center">参考位置</th></tr>';
+            for ($i = 0; $i < t.length; $i++)$j++, $j % 2 == 0 ? t[$i].M >= 6 ? $html += '<tr class="tr-red" style="background-color: #eeeeee;">' : t[$i].M >= 4 ? $html += '<tr style="background-color: #eeeeee;font-weight: bold;">' : $html += '<tr style="background-color: #eeeeee;">' : t[$i].M >= 6 ? $html += '<tr class="tr-red">' : t[$i].M >= 4 ? $html += '<tr style="font-weight: bold;">' : $html += "<tr>", $html += '<td align="center" style="padding-left: 20px">' + t[$i].M + '</td><td align="center">' + t[$i].O_TIME + '</td><td align="center">' + t[$i].EPI_LAT + '</td><td align="center">' + t[$i].EPI_LON + "</td>", $html += '<td align="center">' + t[$i].EPI_DEPTH + '</td><td align="left"><a href="' + static_url + t[$i].NEW_DID + '.html" cid="' + t[$i].CATA_ID + '" id="cid">' + t[$i].LOCATION_C + "</a></td></tr>";
+            $html += "</table>", $("#speedquery").html($html), $("#paging").html(e.page)
+        })
+    }), $(".speedsearch").live("click", function () {
+        var e = $(this).attr("value");
+        $(this).parent("li").attr("id", "active-prop").siblings("li").attr("id", "");
+        var t = $(this).parent("li").parent("ul").attr("id");
+        t == "speedzhenji" ? $("#speedtime").children("li").attr("id", "") : $("#speedzhenji").children("li").attr("id", "");
+        var n = 1;
+        speedsearch(e, n)
+    }), $(".page a").live("click", function () {
+        var e = $("#paging").attr("value"), t = $(this).attr("page");
+        speedsearch(e, t)
+    }), $("#show").click(function () {
+        var e = $(this).attr("rel");
+        if (e) {
+            var t = site_url + "onmap/id:" + e;
+            window.open(t, "_blank")
+        }
+    }), $("#save").click(function () {
+        var e = $(this).attr("rel");
+        e && (window.location.href = site_url + "daochu/id:" + e)
+    }), $(".detailtest").live("click", function () {
+        var e = $(this).attr("name");
+        parseajax.abort(), parseajax = $.getJSON(site_url + "ajax/biaoqian?did=" + did + "&&type=" + encodeURI(e) + "&&callback=?", function (e) {
+            var t = e.data;
+            $html = '<div class="wave">';
+            for ($i = 0; $i < t.length; $i++)$html += '<div class="big-photo"><img src="' + t[$i].sfpic + '" alt=""></div>', $html += "<p>" + t[$i].text + '</p><p class="mb15">(该信息来自：' + t[$i].company + ")</p>";
+            $html += "</div>", $("#title-content").html($html)
+        }, "jsonp"), $(this).siblings("li").attr("id", ""), $(this).attr("id", "active-prop")
+    })
+})

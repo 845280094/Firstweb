@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>地震灾害查询</title>
+    
+    <style>  
+      body {
+        margin: 0;
+      }
+    </style>
+    <link href="styles/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div style="
+        background-color:#f1f1f1;
+        text-align: center;
+        padding: 40px;
+    ">
+        <img src="C:\Users\hcc\Desktop\FirstWeb\imgs\6d5806aba8a7f6b91bd2de139c19254c9cb950a6.jpg" alt="hcc" width="80px" height="80px">
+        <h1>地震灾害查询</h1>
+        <div id="dateTime"></div>
+    </div>
+    <div style="
+        max-width:700px;
+        margin: 30px auto;
+        padding: 15px;
+        /* line-height: 1.7;
+    ">
+    </div>
+
+    <div class="main">
+      <div class="content">
+          <div class="prop">
+              <h1>快捷查询</h1>
+              <div class="prop-iteam">
+                  <ul class="prop-ul" id="speedtime">
+                      <li style="line-height: 20px">按时间：</li>
+                                              <li id="active-prop" style="margin-left: 66px"><a href="javascript:void(0)" class="speedsearch" value="1">最近24小时内地震</a></li>
+                                                                      <li><a href="javascript:void(0)" class="speedsearch" value="2">最近48小时内地震</a></li>
+                                                                      <li><a href="javascript:void(0)" class="speedsearch" value="3">最近7天内地震</a></li>
+                                                                      <li><a href="javascript:void(0)" class="speedsearch" value="4">最近30天内地震</a></li>
+                      <!--                        --><!--                        <li id="active-prop"><a href="javascript:void(0)" class="speedsearch" value="5">以往速报目录查询</a></li>-->
+<!--                        --><!--                        <li><a href="javascript:void(0)" class="speedsearch" value="5">以往速报目录查询</a></li>-->
+<!--                        -->                                                <li><a href="javascript:void(0)" class="speedsearch" value="6">最近一年内地震</a></li>
+                                           </ul>
+              </div>
+              <div class="prop-iteam">
+                  <ul class="prop-ul" id="speedzhenji">
+                      <li style="line-height: 20px">按震级（一年内）：</li>
+                                              <li><a href="javascript:void(0)" class="speedsearch" value="10">6.0级以上地震</a></li>
+                                                                      <li style="margin-left: 25px"><a href="javascript:void(0)" class="speedsearch" value="9">5.0级以上地震</a></li>
+                                                                      <li style="margin-left: 29px"><a href="javascript:void(0)" class="speedsearch" value="8">4.0级以上地震</a></li>
+                                                                      <li style="margin-left: 7px"><a href="javascript:void(0)" class="speedsearch" value="5">3.0级以上地震</a></li>
+                                                                      <li style="margin-left: 14px"><a href="javascript:void(0)" class="speedsearch" value="7">3.0级以下地震</a></li>
+                                          </ul>
+              </div>
+              <div class="title-content">
+                  <h2 class="iteam-h1"><div id="iteam-h1">查询结果：最近24小时地震信息</div>
+                     <!--   <a href="javascript:void(0)" class="check onmap" id="show" rel="">显示到地图</a>
+                      <a href="javascript:void(0)" class="check ontext" id="save" rel="">保存到本地</a>
+                  -->
+                  </h2>
+                  <!--                    <h1 class="iteam-h1">查询结果：--><!--<a id="show" class="onbutton onmap" rel="" href="javascript:void(0)">显示在地图上</a>-->
+<!--                        <a id="save" class="onbutton ontext" href="javascript:void(0)" rel="">保存为文本</a></h1>-->
+                  <div class="speedquery">
+                      <div id="speed-search">
+                      <table border="0" cellpadding="0" cellspacing="0" class="speed-table1">
+                          <tbody><tr class="speed-tr-h1">
+                              <th>震级(M)</th>
+                              <th>发震时刻(UTC+8)</th>
+
+                              <th>纬度(°)</th>
+                              <th>经度(°)</th>
+                              <th>深度(千米)</th>
+                              <th>参考位置</th>
+<!--                                <th width="85">操作</th>-->
+                          </tr>
+                                                                                          <tr style="font-weight: bold;">
+                                                <td align="center" style="padding-left: 20px">4.0</td>
+                              <td align="center">2024-04-27 03:13:27</td>
+
+                              <td align="center">24.18</td>
+                              <td align="center">121.73</td>
+                              <td align="center">25</td>
+                          <td align="left"><a href="https://news.ceic.ac.cn/CD20240427031327.html">台湾花莲县海域</a></td>
+<!--                                <td align="center"><a href="http://dizhentai-pic.stor.sinaapp.com/--><!--info.html" class="check2">查看详情</a></td>-->
+                          </tr>
+                                                                                          <tr style="background-color: #eeeeee;font-weight: bold;">
+                                              <td align="center" style="padding-left: 20px">5.3</td>
+                              <td align="center">2024-04-27 02:49:28</td>
+
+                              <td align="center">24.21</td>
+                              <td align="center">121.77</td>
+                              <td align="center">27</td>
+                          <td align="left"><a href="https://news.ceic.ac.cn/CC20240427024928.html">台湾花莲县海域</a></td>
+<!--                                <td align="center"><a href="http://dizhentai-pic.stor.sinaapp.com/--><!--info.html" class="check2">查看详情</a></td>-->
+                          </tr>
+                                                                                          <tr style="font-weight: bold;">
+                                                <td align="center" style="padding-left: 20px">5.6</td>
+                              <td align="center">2024-04-27 02:21:23</td>
+
+                              <td align="center">24.08</td>
+                              <td align="center">121.77</td>
+                              <td align="center">30</td>
+                          <td align="left"><a href="https://news.ceic.ac.cn/CC20240427022124.html">台湾花莲县海域</a></td>
+<!--                                <td align="center"><a href="http://dizhentai-pic.stor.sinaapp.com/--><!--info.html" class="check2">查看详情</a></td>-->
+                          </tr>
+                                                                                          <tr style="background-color: #eeeeee;font-weight: bold;">
+                                              <td align="center" style="padding-left: 20px">4.6</td>
+                              <td align="center">2024-04-26 20:28:13</td>
+
+                              <td align="center">23.80</td>
+                              <td align="center">121.56</td>
+                              <td align="center">10</td>
+                          <td align="left"><a href="https://news.ceic.ac.cn/CD20240426202813.html">台湾花莲县</a></td>
+<!--                                <td align="center"><a href="http://dizhentai-pic.stor.sinaapp.com/--><!--info.html" class="check2">查看详情</a></td>-->
+                          </tr>
+                                                                                          <tr>
+                                                <td align="center" style="padding-left: 20px">3.1</td>
+                              <td align="center">2024-04-26 13:48:55</td>
+
+                              <td align="center">41.20</td>
+                              <td align="center">83.74</td>
+                              <td align="center">20</td>
+                          <td align="left"><a href="https://news.ceic.ac.cn/CD20240426134855.html">新疆阿克苏地区库车市</a></td>
+<!--                                <td align="center"><a href="http://dizhentai-pic.stor.sinaapp.com/--><!--info.html" class="check2">查看详情</a></td>-->
+                          </tr>
+                          
+                      </tbody></table>
+                      </div>
+                      <p class="pagenum" id="pagenum">当前页:1　总页数:1</p>
+                      <div id="paging">
+                                               </div>
+                  </div><!--speedquery-->
+              </div>
+          </div><!--prop-->
+</div><!--content-->
+
+</div><!--main-->
+
+
+
+    <div style="
+    background-color:#f1f1f1;
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    "></div>
+    <a href="https://www.ceic.ac.cn/speedsearch?time=5&page=2">友情链接</a>
+    <script src="scripts/main.js" defer></script>
+    <link rel="stylesheet" href="./home_min.css">
+    <script type="text/javascript" src="./jquery-1.8.0.min.js.下载"></script>
+    <script type="text/javascript" src="./base.js.下载"></script>
+    <script type="text/javascript">
+      var site_url="https://www.ceic.ac.cn/";
+        var static_url="https://news.ceic.ac.cn/";
+        var num='1';
+        var tip='1';
+        //判断查询的结果是否为空
+        tip=parseInt(tip);
+        //data=eval('null');
+        $(function(){
+            if(tip==0){
+                $('#show').attr('rel','');
+                $('#save').attr('rel','');
+            }else{
+                $('#show').attr('rel',num);
+                $('#save').attr('rel',num);
+            }
+        });
+    </script>
+  </body>
+</html>
